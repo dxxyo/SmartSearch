@@ -1,0 +1,6 @@
+{
+    "type": "module",
+    "dependencies": {
+        "fuzzysort": "^2.0.4"
+    }
+}

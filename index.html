@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/fuzzysort@2.0.4/fuzzysort.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-800 w-screen flex justify-center">
+    <div class="w-1/2 bg-gray-700 rounded-md flex justify-center m-10 p-8">
+        <div class="w-full">
+            
+            <section class="text-white mb-8">
+                <h1 class="text-xl text-white font-semibold">Smart Search</h1>
+                <h5 class="text-sm text-gray-400">Persiapan lks 15/1/2023</h5>
+            </section>
+            <div class="flex w-full justify-center space-x-2">
+                <input type="text" id="search" placeholder="is:archived fish" class="w-full px-3 py-1 rounded-md bg-gray-100">
+                <input type="button" value="search" onclick={ss()} class="bg-green-500 text-white p-2 text-sm font-semibold hover:bg-green-700 hover:shadow-md hover:shadow-green-800 ease-linear duration-200 rounded-md">
+            </div>
+            <script src="script.js"></script>
+            <div id="content" class="space-y-4 mt-6">
+                <script type="text/javascript">
+                    let test = document.getElementById("search")
+                    let content = document.getElementById("content")
+                    function ss(){
+                        content.innerHTML = ""
+                        const s = Search(test.value, datas)
+                        if(test.value === "" ){
+                            datas.forEach(x => {
+                                const contain = document.createElement('div')   
+                                const name = document.createTextNode("Name : "+ x.name)
+                                const status = document.createTextNode("Status : "+ x.status)
+                                const type = document.createTextNode("Type : "+ x.type)
+                                const archived = document.createTextNode("Archived : "+ x.archived)
+                                contain.className = "bg-gray-600 text-white font-semibold rounded-md px-5 py-3 h-max shadow-md"
+                                contain.appendChild(name)
+                                contain.appendChild(document.createElement("br"))
+                                contain.appendChild(status)
+                                contain.appendChild(document.createElement("br"))
+                                contain.appendChild(type)
+                                contain.appendChild(document.createElement("br"))
+                                contain.appendChild(archived)
+                                content.appendChild(contain)
+                           });
+                        }else{
+                            s.forEach(x => {
+                                const contain = document.createElement('div')   
+                                const name = document.createTextNode("Name : "+ x.name)
+                                const status = document.createTextNode("Status : "+ x.status)
+                                const type = document.createTextNode("Type : "+ x.type)
+                                const archived = document.createTextNode("Archived : "+ x.archived)
+                                contain.className = "bg-gray-600 text-white font-semibold rounded-md px-5 py-3 h-max shadow-md"
+                                contain.appendChild(name)
+                                contain.appendChild(document.createElement("br"))
+                                contain.appendChild(status)
+                                contain.appendChild(document.createElement("br"))
+                                contain.appendChild(type)
+                                contain.appendChild(document.createElement("br"))
+                                contain.appendChild(archived)
+                                content.appendChild(contain)                            
+                            });
+                        }
+                    }
+                    
+                    ss()
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
